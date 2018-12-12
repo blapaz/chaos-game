@@ -27,5 +27,14 @@ Parameters
 | PointsPerTick | `<float>`  | Set the number of points created per tick. |
 | StartingShape | `<enum>`  | Set the shape the game will start running as. |
 | NumOfVertex | `<float>`  | Set the number of vertex the shape will have if StartingShape is set to random. |
-| JumpPercent  | `<float>` | Allows the percentage the new point will jump to be set(0.0-1.0). |
+| JumpPercent  | `<float>` | Allows the percentage the new point will jump to be set (0.0-1.0). |
+| RestrictNewPoint | `<bool>`  | Will prevent the same vertex from being chosen twice in a row. |
 
+Example
+----
+Restrictions:
+
+![Restrictions Square](Github/restrictions-square.PNG)
+
+Produce
+![Restricted Square](Github/restricted-square.gif?raw=true)
