@@ -218,9 +218,10 @@ MonoBehaviour:
   isRunning: 1
   tickRate: 0.01
   pointsPerTick: 100
-  startingShape: 1
+  startingShape: 0
   numOfVertex: 3
   jumpPercent: 0.5
+  restrictNewPoint: 0
 --- !u!20 &1007045624
 Camera:
   m_ObjectHideFlags: 0

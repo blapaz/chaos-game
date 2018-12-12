@@ -12,7 +12,7 @@ public class LifeCycleManager : MonoBehaviour {
     [SerializeField] Shape startingShape;
     [SerializeField] int numOfVertex = 3;
     [SerializeField] float jumpPercent = 0.5f;
-    [SerializeField] bool restrictNewPoint = true;
+    [SerializeField] bool restrictNewPoint = false;
 
     Vector3 centre;
     float radius;
@@ -49,11 +49,18 @@ public class LifeCycleManager : MonoBehaviour {
             {
                 for (int i = 0; i < pointsPerTick; i++)
                 {
-                    int newVertex = GetRandomVertex();
-                    if (newVertex != prevVertex)
+                    if (restrictNewPoint)
                     {
-                        GenerateNextRandomPoint(newVertex);
-                        prevVertex = newVertex;
+                        int newVertex = GetRandomVertex();
+                        if (newVertex != prevVertex)
+                        {
+                            GenerateNextRandomPoint(newVertex);
+                            prevVertex = newVertex;
+                        }
+                    }
+                    else
+                    {
+                        GenerateNextRandomPoint(GetRandomVertex());
                     }
                 }
             }
