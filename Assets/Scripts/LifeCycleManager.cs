@@ -12,12 +12,14 @@ public class LifeCycleManager : MonoBehaviour {
     [SerializeField] Shape startingShape;
     [SerializeField] int numOfVertex = 3;
     [SerializeField] float jumpPercent = 0.5f;
+    [SerializeField] bool restrictNewPoint = true;
 
     Vector3 centre;
     float radius;
     Vector2[] vertexes;
     Vector2 currentPoint;
     Color32[] colors;
+    int prevVertex;
 
     void Start ()
     {
@@ -26,6 +28,7 @@ public class LifeCycleManager : MonoBehaviour {
         vertexes = GenerateStartingShape();
         currentPoint = GetRandomStartingPoint();
         colors = FillColorArrayRandomly();
+        prevVertex = -1;
 
         StartCoroutine(Tick());
 	}
@@ -45,7 +48,14 @@ public class LifeCycleManager : MonoBehaviour {
             if (isRunning)
             {
                 for (int i = 0; i < pointsPerTick; i++)
-                    GenerateNextRandomPoint(GetRandomVertex());
+                {
+                    int newVertex = GetRandomVertex();
+                    if (newVertex != prevVertex)
+                    {
+                        GenerateNextRandomPoint(newVertex);
+                        prevVertex = newVertex;
+                    }
+                }
             }
             yield return new WaitForSeconds(tickRate);
         }
