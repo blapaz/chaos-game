@@ -25,10 +25,7 @@ public class LifeCycleManager : MonoBehaviour {
         radius = Camera.main.orthographicSize;
         vertexes = GenerateStartingShape();
         currentPoint = GetRandomStartingPoint();
-        colors = new Color32[vertexes.Length];
-
-        for (int i = 0; i < colors.Length; i++)
-            colors[i] = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
+        colors = FillColorArrayRandomly();
 
         StartCoroutine(Tick());
 	}
@@ -64,6 +61,16 @@ public class LifeCycleManager : MonoBehaviour {
         cam.transform.position = new Vector3(cam.aspect * cam.orthographicSize, cam.aspect, 0);
         Vector3 centre = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 1f));
         return centre;
+    }
+
+    Color32[] FillColorArrayRandomly()
+    {
+        Color32[] colors = new Color32[vertexes.Length];
+
+        for (int i = 0; i < colors.Length; i++)
+            colors[i] = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
+
+        return colors;
     }
 
     Vector2[] GenerateStartingShape()
