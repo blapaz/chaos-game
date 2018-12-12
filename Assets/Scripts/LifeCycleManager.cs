@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LifeCycleManager : MonoBehaviour {
 
-    enum Shape { Random, Triangle, Square, Pentagon }
+    enum Shape { Random, Triangle, Square }
 
     [SerializeField] bool isRunning = true;
-    [SerializeField] float tickRate = 0.0001f;
+    [SerializeField] float tickRate = 0.01f;
+    [SerializeField] float pointsPerTick = 100;
     [SerializeField] Shape startingShape;
     [SerializeField] int numOfVertex = 3;
     [SerializeField] float jumpPercent = 0.5f;
@@ -29,9 +30,6 @@ public class LifeCycleManager : MonoBehaviour {
         for (int i = 0; i < colors.Length; i++)
             colors[i] = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
 
-        foreach (var vertex in vertexes)
-            DisplayPoint(vertex, Color.green);
-
         StartCoroutine(Tick());
 	}
 
@@ -48,7 +46,10 @@ public class LifeCycleManager : MonoBehaviour {
         while (true)
         {
             if (isRunning)
-                GenerateNextRandomPoint(GetRandomVertex());
+            {
+                for (int i = 0; i < pointsPerTick; i++)
+                    GenerateNextRandomPoint(GetRandomVertex());
+            }
             yield return new WaitForSeconds(tickRate);
         }
     }

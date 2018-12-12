@@ -216,7 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRunning: 1
-  tickRate: 0.0001
+  tickRate: 0.01
+  pointsPerTick: 100
   startingShape: 1
   numOfVertex: 3
   jumpPercent: 0.5
