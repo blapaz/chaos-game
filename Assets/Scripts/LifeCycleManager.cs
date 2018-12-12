@@ -134,7 +134,7 @@ public class LifeCycleManager : MonoBehaviour {
 
     void GenerateNextRandomPoint(int targetVertex)
     {
-        Vector2 nextPoint = vertexes[targetVertex] + (currentPoint - vertexes[targetVertex]) * jumpPercent;
+        Vector2 nextPoint = Vector2.Lerp(currentPoint, vertexes[targetVertex], jumpPercent);
         DisplayPoint(nextPoint, colors[targetVertex]);
         currentPoint = nextPoint;
     }
