@@ -24,6 +24,7 @@ Parameters
 | ---------- |------------| -------------------------------|
 | IsRunning  | `<string>` | Set the game state as running or stopped. |
 | TickRate   | `<float>`  | Set the time between each generation or tick. |
+| PointsPerTick | `<float>`  | Set the number of points created per tick. |
 | StartingShape | `<enum>`  | Set the shape the game will start running as. |
 | NumOfVertex | `<float>`  | Set the number of vertex the shape will have if StartingShape is set to random. |
 | JumpPercent  | `<float>` | Allows the percentage the new point will jump to be set(0.0-1.0). |
